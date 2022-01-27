@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.lang.Math;
 
 class Spheroid {
     public static void main(String[] args){
@@ -7,13 +8,13 @@ class Spheroid {
         double pi = Math.PI;
 
         // Scanning for equitorial radius
-        System.out.print("Enter equitorial radius in km: ");
         Scanner userInput = new Scanner(System.in);
+        System.out.print("Enter equatorial radius in km: ");
         eqRadius = userInput.nextDouble();
+
 
         // Scanning for polar radius
         System.out.print("Enter polar radius in km: ");
-        userInput = new Scanner(System.in);
         poRadius = userInput.nextDouble();
 
         //Math.pow(num, power);
@@ -22,7 +23,8 @@ class Spheroid {
         volume = (4*pi*Math.pow(eqRadius,2)*poRadius) / 3;
         
         // Outputs
-        System.out.printf("Eccentricity = %.3f\n", eccentricity);
+        System.out.printf("Eccentricity = %.3f", eccentricity);
+        System.out.println();
         System.out.printf("Volume = %g cubic km", volume);
         
     }
