@@ -16,8 +16,14 @@ class Spheroid {
         userInput = new Scanner(System.in);
         poRadius = userInput.nextDouble();
 
-        
         //Math.pow(num, power);
+        // Calculating eccentricity and volume
+        eccentricity = Math.sqrt(1-(Math.pow(poRadius,2)/Math.pow(eqRadius,2)));
+        volume = (4*pi*Math.pow(eqRadius,2)*poRadius) / 3;
+        
+        // Outputs
+        System.out.printf("Eccentricity = %.3f\n", eccentricity);
+        System.out.printf("Volume = %g cubic km", volume);
         
     }
 }
