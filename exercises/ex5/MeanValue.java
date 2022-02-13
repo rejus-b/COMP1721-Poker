@@ -1,5 +1,14 @@
 public class MeanValue {
   public static double meanValue(double[] data) {
+  
+    double total = 0;
+    int i; // counter
+    for (i = 0; i < data.length; i++){
+      total = total + data[i];
+    }
+
+    return(total/data.length);
+
   }
 
   public static void main(String[] args) {
@@ -10,12 +19,13 @@ public class MeanValue {
     }
 
     int i; // counter
-    double doubleArgs = [];
-    for (i = 0; i < args.length - 1; i++){
+    double [] doubleArgs = new double[args.length];
+    for (i = 0; i < args.length; i++){
       doubleArgs[i] = Double.parseDouble(args[i]);
+      System.out.println(doubleArgs[i]);
     }
 
-    System.out.printf(MeanValue[doubleArgs]);
+    System.out.printf("Mean value = %.3f", meanValue(doubleArgs));
 
   }
 }
