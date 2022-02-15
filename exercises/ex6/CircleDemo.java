@@ -6,7 +6,7 @@ public class CircleDemo {
     Circle circleObject = new Circle(r);
 
     System.out.printf("Radius  = %.5f", circleObject.getRadius());
-    System.out.printf("Perimier = %.5f", circleObject.perimiter());
+    System.out.printf("Perimier = %.5f", circleObject.perimeter());
     System.out.printf("Perimier = %.5f", circleObject.area());
 
     }
