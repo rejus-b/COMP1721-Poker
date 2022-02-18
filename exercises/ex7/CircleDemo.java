@@ -2,12 +2,18 @@ public class CircleDemo {
 
     public static void main(String [] args){
     
-    double r = -2; // 5 Cm
-    Circle circleObject = new Circle(r);
+    Circle circleObject = new Circle(1.0);
+    Circle circle2 = new Circle(1.00005);
 
-    System.out.printf("Radius  = %.5f", circleObject.getRadius());
-    System.out.printf("Perimier = %.5f", circleObject.perimeter());
-    System.out.printf("Perimier = %.5f", circleObject.area());
+    System.out.println(circleObject.equals(circle2));
+
+
+    // System.out.printf("Radius  = %.5f", circleObject.getRadius());
+    // System.out.printf("Perimier = %.5f", circleObject.perimeter());
+    // System.out.printf("Perimier = %.5f", circleObject.area());
+
+    // System.out.println(circleObject.toString());
+
 
     }
 }
