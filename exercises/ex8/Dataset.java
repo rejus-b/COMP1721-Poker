@@ -1,4 +1,5 @@
 import java.io.IOException;
+// import java.Exception.ArithmeticException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -47,10 +48,21 @@ public class Dataset {
 
     }
 
-    public double meanValue(){
+    public double meanValue() throws ArithmeticException{
 
-        return(0.0);
+        double total = 0;
+        double mean;
 
+        if (data.size() == 0){
+            throw new ArithmeticException();
+        }
+
+        for (int i = 0; i < data.size(); i++){
+            total = total + data.get(i);
+        }
+
+        mean = total / data.size();
+        return (mean);
     }
 
 
