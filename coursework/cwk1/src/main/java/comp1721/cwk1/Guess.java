@@ -1,7 +1,9 @@
 package comp1721.cwk1;
 
 import java.util.Scanner;
-
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Guess {
 

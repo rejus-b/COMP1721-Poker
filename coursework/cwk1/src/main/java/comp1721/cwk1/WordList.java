@@ -1,9 +1,12 @@
 package comp1721.cwk1;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WordList {
 
-  private List<String> words = new Arraylist<>();
+  private List<String> words = new ArrayList<>();
 
   // TODO: Implement constructor with a String parameter
   WordList(String filename){
