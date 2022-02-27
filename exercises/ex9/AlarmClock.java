@@ -23,17 +23,37 @@ public class AlarmClock extends Clock{
         return(alarmMinutes);
     }
 
-    public void setAlarm(int h, int m){
+    public void setAlarm(int h, int m) throws IllegalArgumentException{
+        if (alarmHours < 0 || alarmHours > 59){
+            throw new IllegalArgumentException("invalid alarm hours");
+        } else if (alarmMinutes < 0 || alarmMinutes > 59){
+            throw new IllegalArgumentException("invalid alarm minutes");
+        }
+
         alarmHours = h;
         alarmMinutes = m;
     }
 
     public boolean isRinging(){
+        if (super.getMinutes() == alarmMinutes){
+            if (super.getHours() == alarmHours){
+                int current_seconds = super.getSeconds();
+                if (super.getSeconds() - current_seconds < 15){
+                    System.out.println("YES");
+                    System.out.println(super.getSeconds());
+                    System.out.println(current_seconds);
+                    return(true);
+                }
+                return(false);
+            }
+            return(false);
+        }
         return(false);
     }
 
     @Override
     public void display(){
+        System.out.println(isRinging());
         
     }
 
