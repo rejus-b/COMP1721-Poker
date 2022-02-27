@@ -2,7 +2,6 @@ public class AlarmClock extends Clock{
 
     private int alarmHours;
     private int alarmMinutes;
-    private int current_seconds = 0;
 
     public AlarmClock(){
         super(0,0,0);
@@ -38,9 +37,7 @@ public class AlarmClock extends Clock{
     public boolean isRinging(){
         if (super.getMinutes() == alarmMinutes){
             if (super.getHours() == alarmHours){
-                current_seconds = current_seconds + 1;
-                // An alternative method would be to take away from the minute
-                if (current_seconds <= 15){
+                if (super.getSeconds() < 15){
                     // System.out.println("YES");
                     // System.out.println(super.getSeconds());
                     // System.out.println(current_seconds);
@@ -55,7 +52,12 @@ public class AlarmClock extends Clock{
 
     @Override
     public void display(){
-        System.out.println(isRinging());
+        // System.out.println(isRinging());
+        if (isRinging() == false){
+            System.out.println(toString());
+        } else if (isRinging() == true){
+            System.out.println(toString() + " - WAKE UP!");
+        }
         
     }
 
