@@ -38,21 +38,20 @@ public class Guess {
 
   // TODO: Implement getGuessNumber(), returning an int
   public int getGuessNumber(){
-
-    return(1);
+    return(guessNumber);
   }
 
 
   // TODO: Implement getChosenWord(), returning a String
   public String getChosenWord(){
-
-    return("");
+    return(chosenWord);
   }
 
 
   // TODO: Implement readFromPlayer()
   public void readFromPlayer(){
-
+    Scanner userInput = new Scanner(System.in);
+    chosenWord = userInput.nextString();
   }
 
 
