@@ -36,7 +36,7 @@ public class WordList {
 
   // TODO: Implement getWord() with an int parameter, returning a String
   public String getWord(int n) throws GameException{ // gameNumber is the total amount of possible games e.g. 0 to the max number of words.
-    if (n < 0 || n > 4){
+    if (n < 0 || n > words.size() - 1){
       throw new GameException("Invalid game number.");
     } else{
       return(words.get(n));
