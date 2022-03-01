@@ -80,7 +80,7 @@ public class Guess {
     StringBuilder returnString = new StringBuilder();
 
     for (int i = 0; i < 5; i++){ // Find full matches
-      if (chosenWord.charAt(i) == target.charAt(i)){   //green
+      if (chosenWordArray[i] == targetArray[i]){   //green
         returnString.append(green + chosenWordArray[i] + closeColour);
       }
 
