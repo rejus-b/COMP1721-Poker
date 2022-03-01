@@ -14,46 +14,57 @@ public class Guess {
   private static final Scanner INPUT = new Scanner(System.in);
 
   // TODO: Implement constructor with int parameter
-  Guess(int num){
-
+  public Guess(int num){
+    if (num < 1 || num > 6){
+      throw new GameException("Invalid guess number.");
+    } else {
+      guessNumber = num;
+    }
   }
 
 
   // TODO: Implement constructor with int and String parameters
-  Guess(int num, String word){
-
+  public Guess(int num, String word){
+    if (num < 1 || num > 6){
+      throw new GameException("Invalid guess number.");
+    } else if (word.matches("^[a-zA-Z]+") == false || word.length() != 5){
+      throw new GameException("Invalid guess word.");
+    } else {
+      guessNumber = num;
+      chosenWord = word.toUpperCase();
+    }
   }
 
 
   // TODO: Implement getGuessNumber(), returning an int
-  int getGuessNumber(){
+  public int getGuessNumber(){
 
     return(1);
   }
 
 
   // TODO: Implement getChosenWord(), returning a String
-  String getChosenWord(){
+  public String getChosenWord(){
 
     return("");
   }
 
 
   // TODO: Implement readFromPlayer()
-  void readFromPlayer(){
+  public void readFromPlayer(){
 
   }
 
 
   // TODO: Implement compareWith(), giving it a String parameter and String return type
-  String compareWith(String target){
+  public String compareWith(String target){
 
     return("");
   }
 
 
   // TODO: Implement matches(), giving it a String parameter and boolean return type
-  boolean matches(String target){
+  public boolean matches(String target){
 
     return(true);
   }
