@@ -45,7 +45,6 @@ public class Game {
 
       for(int i = 1; i < 7; i++) {
         Guess guess = new Guess(i);
-        System.out.println(target); // REMOVE THIS LATER // Original word for today was CHOKE
         System.out.printf("Enter guess (%d/6): ", guess.getGuessNumber());
         guess.readFromPlayer();
         Guess validateGuess = new Guess(i, guess.getChosenWord());
