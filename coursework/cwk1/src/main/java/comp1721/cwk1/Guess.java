@@ -68,8 +68,8 @@ public class Guess {
     // Remove the letter from the target word once its found 
 
 
-    char [] targetArray = target.toCharArray();
-    char [] chosenWordArray = chosenWord.toCharArray();
+    // char [] targetArray = target.toCharArray();
+    // char [] chosenWordArray = chosenWord.toCharArray();
 
     String green = "\033[30;102m ";
     String yellow = "\033[30;103m ";
@@ -77,17 +77,50 @@ public class Guess {
     String closeColour = " \033[0m";
 
 
-    StringBuilder returnString = new StringBuilder();
+    StringBuilder outputString = new StringBuilder();
+    StringBuilder removeLetter = new StringBuilder();
+
 
     for (int i = 0; i < 5; i++){ // Find full matches
-      if (chosenWordArray[i] == targetArray[i]){   //green
-        returnString.append(green + chosenWordArray[i] + closeColour);
+      if (chosenWord.charAt(i) == target.charAt(i)){ 
+        outputString.append(green + chosenWord.charAt(i) + closeColour);
+        target = target.substring(0,i) + "." + target.substring(i+1,5);
+      } else{
+        if (chosenWord.indexOf(target.charAt(i)) != -1){
+          outputString.append(yellow + chosenWord.charAt(i) + closeColour);
+          target = target.substring(0,i) + "." + target.substring(i+1,5);
+        }
+        else{
+          outputString.append(white + chosenWord.charAt(i) + closeColour);
+        }
       }
-
-
-      
     }
-    return (returnString.toString());
+
+    // for (int i = 0; i < 5; i++){ // Find full matches
+    //   if (chosenWordArray[i] == targetArray[i]){   // All match
+    //     returnString.append(green + chosenWordArray[i] + closeColour);
+    //     //chosenWordArray[i] = '.';
+    //   } else if (chosenWordArray.indexOf(targetArray) != -1){
+    //     returnString.append(yellow + chosenWordArray[i] + closeColour);
+    //   }
+      
+    // USE INDEXOFF on the target string using the chosenword array as a return -1 statement would mean that it is not present, error checking later\ 
+
+
+      // for (int j = 0; j < 5; j++){
+      //    if (i != j){
+      //     if (chosenWordArray[i] == targetArray[j]){
+      //       returnString.append(yellow + chosenWordArray[i] + closeColour);
+      //       chosenWordArray[i] = '.';
+      //       break;
+      //     }
+      //   }
+        
+      // }
+
+      //returnString.append(white + chosenWordArray[i] + closeColour);
+    
+    return (outputString.toString());
   }
 
 
