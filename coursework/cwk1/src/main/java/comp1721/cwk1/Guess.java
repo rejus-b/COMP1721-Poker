@@ -85,53 +85,14 @@ public class Guess {
         outputString.append(green + chosenWord.charAt(i) + closeColour);
         target = target.substring(0,i) + "." + target.substring(i+1,5);
       } else{
-        //char charChosenWord = chosenWord[i];
         if (target.indexOf(chosenWord.charAt(i)) != -1){
           outputString.append(yellow + chosenWord.charAt(i) + closeColour);
           target = target.substring(0,target.indexOf(chosenWord.charAt(i))) + "." + target.substring(target.indexOf(chosenWord.charAt(i))+1,5);
-          //continue loop;
-                System.out.println("\n ");
-        System.out.println(target);
-        System.out.println("\n ");
-        
-        }
-        else{
+        } else{
           outputString.append(white + chosenWord.charAt(i) + closeColour);
         }
-        // System.out.println("\n ");
-        // System.out.println(target);
-        // System.out.println("\n ");
       }
     }
-
-    // for (int i = 0; i < 5; i++){ // Find full matches
-    //   if (chosenWordArray[i] == targetArray[i]){   // All match
-    //     returnString.append(green + chosenWordArray[i] + closeColour);
-    //     //chosenWordArray[i] = '.';
-    //   } else if (chosenWordArray.indexOf(targetArray) != -1){
-    //     returnString.append(yellow + chosenWordArray[i] + closeColour);
-    //   }
-      
-    // USE INDEXOFF on the target string using the chosenword array as a return -1 statement would mean that it is not present, error checking later\ 
-
-
-      // for (int j = 0; j < 5; j++){
-      //    if (i != j){
-      //     if (chosenWordArray[i] == targetArray[j]){
-      //       returnString.append(yellow + chosenWordArray[i] + closeColour);
-      //       chosenWordArray[i] = '.';
-      //       break;
-      //     }
-      //   }
-        
-      // }
-
-      //returnString.append(white + chosenWordArray[i] + closeColour);
-    
-    System.out.println("\n\n\n ");
-    System.out.println(outputString.toString());
-    System.out.println("\n\n\n ");
-    return (outputString.toString());
   }
 
 
