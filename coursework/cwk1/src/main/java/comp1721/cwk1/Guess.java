@@ -85,6 +85,7 @@ public class Guess {
         outputString.append(green + chosenWord.charAt(i) + closeColour);
         target = target.substring(0,i) + "." + target.substring(i+1,5);
       } else{
+        //char charChosenWord = chosenWord[i];
         if (target.indexOf(chosenWord.charAt(i)) != -1){
           outputString.append(yellow + chosenWord.charAt(i) + closeColour);
           target = target.substring(0,target.indexOf(chosenWord.charAt(i))) + "." + target.substring(target.indexOf(chosenWord.charAt(i))+1,5);
@@ -93,6 +94,7 @@ public class Guess {
         }
       }
     }
+    return (outputString.toString());
   }
 
 
