@@ -52,6 +52,7 @@ public class Guess {
   // TODO: Implement readFromPlayer()
   public void readFromPlayer(){
     chosenWord = INPUT.nextLine();
+    chosenWord = chosenWord.toUpperCase();
   }
 
 
@@ -82,15 +83,14 @@ public class Guess {
 
 
     for (int i = 0; i < 5; i++){ // Find full matches
-      if (chosenWord.charAt(i) == target.charAt(i)){ 
+      if (target.charAt(i) == chosenWord.charAt(i)){ 
         outputString.append(green + chosenWord.charAt(i) + closeColour);
         target = target.substring(0,i) + "." + target.substring(i+1,5);
       } else{
-        if (chosenWord.indexOf(target.charAt(i)) != -1){
+        if (target.indexOf(chosenWord.charAt(i)) != -1){
           outputString.append(yellow + chosenWord.charAt(i) + closeColour);
           target = target.substring(0,i) + "." + target.substring(i+1,5);
-        }
-        else{
+        } else{
           outputString.append(white + chosenWord.charAt(i) + closeColour);
         }
       }
