@@ -15,17 +15,16 @@ public class WordList {
   // TODO: Implement constructor with a String parameter
   public WordList(String filename) throws IOException{
 
-    try (Scanner input = new Scanner(Paths.get(filename))) {
+    Scanner input = new Scanner(Paths.get(filename));
 
         while (input.hasNextLine()){
             String value = input.nextLine();                
             words.add(value);
         }
-
         input.close();
+        
     }
 
-  }
 
 
   // TODO: Implement size() method, returning an int
