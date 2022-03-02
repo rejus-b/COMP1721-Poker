@@ -77,22 +77,30 @@ public class Guess {
     String white = "\033[30;107m ";
     String closeColour = " \033[0m";
 
-
     StringBuilder outputString = new StringBuilder();
-    StringBuilder removeLetter = new StringBuilder();
 
-
+    loop:
     for (int i = 0; i < 5; i++){ // Find full matches
       if (target.charAt(i) == chosenWord.charAt(i)){ 
         outputString.append(green + chosenWord.charAt(i) + closeColour);
         target = target.substring(0,i) + "." + target.substring(i+1,5);
       } else{
+        //char charChosenWord = chosenWord[i];
         if (target.indexOf(chosenWord.charAt(i)) != -1){
           outputString.append(yellow + chosenWord.charAt(i) + closeColour);
-          target = target.substring(0,i) + "." + target.substring(i+1,5);
-        } else{
+          target = target.substring(0,target.indexOf(chosenWord.charAt(i))) + "." + target.substring(target.indexOf(chosenWord.charAt(i))+1,5);
+          //continue loop;
+                System.out.println("\n ");
+        System.out.println(target);
+        System.out.println("\n ");
+        
+        }
+        else{
           outputString.append(white + chosenWord.charAt(i) + closeColour);
         }
+        // System.out.println("\n ");
+        // System.out.println(target);
+        // System.out.println("\n ");
       }
     }
 
@@ -120,6 +128,9 @@ public class Guess {
 
       //returnString.append(white + chosenWordArray[i] + closeColour);
     
+    System.out.println("\n\n\n ");
+    System.out.println(outputString.toString());
+    System.out.println("\n\n\n ");
     return (outputString.toString());
   }
 
