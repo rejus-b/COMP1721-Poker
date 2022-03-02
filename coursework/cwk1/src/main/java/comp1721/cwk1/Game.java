@@ -62,7 +62,7 @@ public class Game {
             System.out.print("That was a close call!");
             break;
           }
-        } else if (i > 6){ // Didnt guess correct
+        } if (i == 6  && (!guess.matches(target))){ // Didnt guess correct
           System.out.print("Nope - Better luck next time!");
           break;
         }
