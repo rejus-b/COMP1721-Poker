@@ -69,13 +69,14 @@ public class Guess {
     // Remove the letter from the target word once its found 
 
 
-    // char [] targetArray = target.toCharArray();
-    // char [] chosenWordArray = chosenWord.toCharArray();
+    char [] targetArray = target.toCharArray();
+    char [] chosenWordArray = chosenWord.toCharArray();
 
     String green = "\033[30;102m ";
     String yellow = "\033[30;103m ";
     String white = "\033[30;107m ";
     String closeColour = " \033[0m";
+    boolean found = false;
 
     StringBuilder outputString = new StringBuilder();
 
@@ -84,53 +85,93 @@ public class Guess {
       if (target.charAt(i) == chosenWord.charAt(i)){ 
         outputString.append(green + chosenWord.charAt(i) + closeColour);
         target = target.substring(0,i) + "." + target.substring(i+1,5);
+        // System.out.println(target);
+        continue loop;
       } else{
+        if (target.charAt(i) == chosenWord.charAt(i)){ 
+          outputString.append(green + chosenWord.charAt(i) + closeColour);
+          target = target.substring(0,i) + "." + target.substring(i+1,5);
+          // System.out.println(target);
+          continue loop;
+        }
         //char charChosenWord = chosenWord.charAt(i)
+
         if (target.indexOf(chosenWord.charAt(i)) != -1){
-          outputString.append(yellow + chosenWord.charAt(i) + closeColour);
-          target = target.substring(0,target.lastIndexOf(chosenWord.charAt(i))) + "." + target.substring(target.lastIndexOf(chosenWord.charAt(i))+1,5);
-          //continue loop;
-                System.out.println("\n ");
-        System.out.println(target);
-        System.out.println("\n ");
+          for (int j = 0; j < 5; j++){
+
+            if (chosenWord.charAt(i) == target.charAt(j)){
+              outputString.append(yellow + chosenWord.charAt(i) + closeColour);
+              target = target.substring(0,target.lastIndexOf(chosenWord.charAt(i))) + "." + target.substring(target.lastIndexOf(chosenWord.charAt(i))+1,5);
+              continue loop;
+            }
+          }
+
+          // target = target.substring(0,target.lastIndexOf(chosenWord.charAt(i))) + "." + target.substring(target.lastIndexOf(chosenWord.charAt(i))+1,5);
+        //   //continue loop;
+        //         System.out.println("\n ");
+        // System.out.println(target);
+        // System.out.println("\n ");
         
         }
         else{
           outputString.append(white + chosenWord.charAt(i) + closeColour);
         }
-        // System.out.println("\n ");
-        // System.out.println(target);
-        // System.out.println("\n ");
+
+        System.out.println("\n ");
+        System.out.println(target);
+        System.out.println("\n ");
       }
     }
 
-    // for (int i = 0; i < 5; i++){ // Find full matches
-    //   if (chosenWordArray[i] == targetArray[i]){   // All match
-    //     returnString.append(green + chosenWordArray[i] + closeColour);
-    //     //chosenWordArray[i] = '.';
-    //   } else if (chosenWordArray.indexOf(targetArray) != -1){
-    //     returnString.append(yellow + chosenWordArray[i] + closeColour);
-    //   }
-      
+
     // USE INDEXOFF on the target string using the chosenword array as a return -1 statement would mean that it is not present, error checking later\ 
 
-
-      // for (int j = 0; j < 5; j++){
-      //    if (i != j){
-      //     if (chosenWordArray[i] == targetArray[j]){
-      //       returnString.append(yellow + chosenWordArray[i] + closeColour);
-      //       chosenWordArray[i] = '.';
-      //       break;
-      //     }
-      //   }
-        
-      // }
-
-      //returnString.append(white + chosenWordArray[i] + closeColour);
+    // loop:
+    // for (int i = 0; i < 5; i++) {
+    //   for (int j = 0; j < 5; j++) {
+    //     if (chosenWordArray[i] == targetArray[j]) {
+    //       if (i == j) {
+    //         outputString.append(green + chosenWordArray[i] + closeColour);
+    //         targetArray[j] = '.';
+    //         continue loop;
+    //       } else{
+    //         outputString.append(yellow + chosenWordArray[i] + closeColour); 
+    //         targetArray[j] = '.';
+    //         continue loop;
+    //       }
+    //     }
+    //     System.out.println(targetArray);
+    //   }
+    //     outputString.append(white + chosenWordArray[i] + closeColour);
+    // }
     
-    System.out.println("\n\n\n ");
-    System.out.println(outputString.toString());
-    System.out.println("\n\n\n ");
+    // return (outputString.toString());
+
+    // loop:
+    // for (int i = 0; i < 5; i++) {
+    //   if (chosenWord.charAt(i) == chosenWord.charAt(target.indexOf(chosenWord.charAt(i)))) {
+    //   for (int j = 0; j < 5; j++) {
+    //     outputString.append(green + chosenWordArray[i] + closeColour);
+    //     targetArray[j] = '.';
+    //     continue loop;
+    //   }
+        
+          // if (i == j) {
+          //   outputString.append(green + chosenWordArray[i] + closeColour);
+          //   targetArray[j] = '.';
+          //   continue loop;
+          // } 
+          // else{
+          //   outputString.append(yellow + chosenWordArray[i] + closeColour); 
+          //   targetArray[j] = '.';
+          //   continue loop;
+          // }
+        // }
+        // System.out.println(targetArray);
+      // }
+        // outputString.append(white + chosenWordArray[i] + closeColour);
+    
+    
     return (outputString.toString());
   }
 
