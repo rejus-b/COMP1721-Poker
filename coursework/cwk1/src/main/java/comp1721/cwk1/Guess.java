@@ -117,9 +117,9 @@ public class Guess {
           outputString.append(white + chosenWord.charAt(i) + closeColour);
         }
 
-        System.out.println("\n ");
-        System.out.println(target);
-        System.out.println("\n ");
+        // System.out.println("\n ");
+        // System.out.println(target);
+        // System.out.println("\n ");
       }
     }
 

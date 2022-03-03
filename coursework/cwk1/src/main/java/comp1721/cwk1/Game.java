@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-//import java.util.Date.*;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-// Import chromium for dates dont use the reecomended stuff its jank
 
 public class Game {
 
@@ -53,17 +55,17 @@ public class Game {
 
         if (guess.matches(target)){ // If its a first round guess
           if (i == 1){
-            System.out.print("Superb - Got it in one!");
+            System.out.print("Superb - Got it in one!\n");
             break;
           } else if ((i > 1) && (i < 6)){ // 2-5 Guesses
-            System.out.print("Well done!");
+            System.out.print("Well done!\n");
             break;
           } else if (i == 6){ // Last round guess
-            System.out.print("That was a close call!");
+            System.out.print("That was a close call!\n");
             break;
           }
         } if (i == 6  && (!guess.matches(target))){ // Didnt guess correct
-          System.out.print("Nope - Better luck next time!");
+          System.out.print("Nope - Better luck next time!\n");
           break;
         }
       }
@@ -71,7 +73,12 @@ public class Game {
 
 
   // TODO: Implement save() method, with a String parameter
-  public void save(String filename){
-
+  public void save(String filename) throws IOException{
+    Path path = Paths.get(filename);
+    try (PrintWriter out = new PrintWriter(Files.newBufferedWriter(path))){
+      for (int i = 0; i < guesses.size(); i++){
+        out.println(guesses.get(i));
+      }
+    }
   }
 }
