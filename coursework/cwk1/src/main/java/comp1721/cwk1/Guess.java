@@ -1,10 +1,6 @@
 package comp1721.cwk1;
 
 import java.util.Scanner;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class Guess {
 
@@ -44,14 +40,14 @@ public class Guess {
   // TODO: Implement getGuessNumber(), returning an int
   public int getGuessNumber(){
     // Returns the guessNumber
-    return(guessNumber);
+    return guessNumber;
   }
 
 
   // TODO: Implement getChosenWord(), returning a String
   public String getChosenWord(){
     // Returns the users input 
-    return(chosenWord);
+    return chosenWord;
   }
 
 
@@ -118,7 +114,7 @@ public class Guess {
       }
     }
     // Return the final string
-    return (outputString.toString());
+    return outputString.toString();
   }
     
 
@@ -126,9 +122,9 @@ public class Guess {
   public boolean matches(String target){
     // If the chosenwords has the same value as the target return true, else return false
     if (chosenWord.equals(target)){
-      return(true);
+      return true;
     } else {
-      return(false);
+      return false;
     }
   }
 }

@@ -72,10 +72,12 @@ public class Game {
           if (i == 1){
             System.out.print("Superb - Got it in one!\n");
             break;
-          } else if ((i > 1) && (i < 6)){ // If the player guesses it in 2-5 goes
+          } else if ((i > 1) && (i < 6)){ 
+            // If the player guesses it in 2-5 goes
             System.out.print("Well done!\n");
             break;
-          } else if (i == 6){ // If the player guesses it on the last go
+          } else if (i == 6){ 
+            // If the player guesses it on the last go
             System.out.print("That was a close call!\n");
             break;
           }

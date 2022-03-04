@@ -3,7 +3,6 @@ package comp1721.cwk1;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -32,7 +31,7 @@ public class WordList {
   // TODO: Implement size() method, returning an int
   public int size(){
     //Calls the inbuilt size function on words and return it
-    return(words.size());
+    return words.size();
   }
 
 
@@ -44,7 +43,7 @@ public class WordList {
       throw new GameException("Invalid game number.");
     } else{
       // Return the word at the chosen gameNumber
-      return(words.get(n));
+      return words.get(n);
     }
   }
 }
