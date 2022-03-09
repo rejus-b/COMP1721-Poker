@@ -24,12 +24,14 @@ public class Money implements Writeable{
     return new Money(sumEuros + sumCents / 100, sumCents % 100);
   }
 
-  public void writeTo(Writer destination) throws IOException {
+  public void writeTo(Writer destination) throws IOException{
 
-    String outputString = String.format("Money: €%d.%f.2", getEuros(), getCents());
+
+    
+    // String outputString = String.format("%d", e + c);
+    String outputString = String.format("Money: €%d.%02d\n", getEuros(), getCents());
     destination.write(outputString);
     destination.close();
-
 
   }
 

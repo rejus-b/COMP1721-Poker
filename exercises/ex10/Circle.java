@@ -1,8 +1,10 @@
 import java.util.Scanner;
 import java.lang.Math;
 import java.io.IOException;
+import java.io.FileWriter;
+import java.io.Writer;
 
-public class Circle{
+public class Circle implements Writeable{
 
     private double radius;
     //static double PI = Math.PI; 
@@ -35,12 +37,12 @@ public class Circle{
 
     }
 
-//   public void writeTo(Writer destination) throws IOException {
+  public void writeTo(Writer destination) throws IOException{
 
-//     Path path = Paths.get(destination);
-//     try (PrintWriter out = new PrintWriter(Files.newBufferedWriter(path))){
+    String outputString = String.format("Circle: r=%.4f\n", getRadius());
+    destination.write(outputString);
+    destination.close();
 
-//     }
-//   }
+  }
 
 }
