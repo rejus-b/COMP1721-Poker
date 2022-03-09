@@ -1,8 +1,8 @@
 import java.io.FileWriter;
 import java.io.Writer;
+import java.io.IOException;
 
-
-public class Money {
+public class Money implements Writeable{
   private int euros, cents;
 
   public Money(int e, int c) {
@@ -24,8 +24,16 @@ public class Money {
     return new Money(sumEuros + sumCents / 100, sumCents % 100);
   }
 
-    public void writeTo(Writer destination){
-        
-    }
+  public void writeTo(Writer destination) throws IOException {
+
+    String outputString = String.format("Money: €%d.%f.2", getEuros(), getCents());
+    destination.write(outputString);
+    destination.close();
+
+
+  }
+
+
+    
 
 }
