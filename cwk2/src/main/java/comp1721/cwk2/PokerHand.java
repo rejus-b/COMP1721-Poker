@@ -9,12 +9,14 @@ import java.util.ArrayList;
 public class PokerHand extends CardCollection
 {
     protected static final int FULL_SIZE = 5;
-    private ArrayList<Card> pokerHand = new ArrayList<>();
+    // private ArrayList<Card> pokerHand = new ArrayList<>();
 
     public PokerHand()
     {
-        // super();
-        ArrayList<Card> pokerHand = new ArrayList<>();
+
+        super();
+        // ArrayList<Card> pokerHand = new ArrayList<>();
+        // cards.add()
     }
     
     public PokerHand(String chosenCards)

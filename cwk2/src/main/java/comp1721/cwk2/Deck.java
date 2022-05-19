@@ -1,6 +1,7 @@
 package comp1721.cwk2;
 import comp1721.cwk2.Card.Rank;
 import comp1721.cwk2.Card.Suit;
+import java.util.Collections;
 
 // Implement Deck class here
 
@@ -8,7 +9,6 @@ public class Deck extends CardCollection
 {
     public Deck() 
     {
-
         super();
         
         for (Suit suit : Suit.values())
@@ -23,22 +23,22 @@ public class Deck extends CardCollection
 
     public int size()
     {
-        return 0;
+        return super.size();
     }
     
     public boolean isEmpty()
     {
-        return false;
+        return super.isEmpty();
     }
 
-    public boolean contains()
+    public boolean contains(Card card)
     {
-        return false;
+        return super.contains(card);
     }
 
     public void discard()
     {
-        
+        super.discard();
     }
 
     public Card deal()
@@ -48,7 +48,7 @@ public class Deck extends CardCollection
 
     public void shuffle()
     {
-
+        Collections.shuffle(cards);
     }
 
 }
