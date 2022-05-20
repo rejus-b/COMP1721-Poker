@@ -24,7 +24,7 @@ public class PokerHand extends CardCollection
         for (String card : fiveHand)
         {
             Card newCard = new Card(card);
-                add(newCard);   
+            add(newCard);   
         }
     }
 
@@ -68,6 +68,7 @@ public class PokerHand extends CardCollection
             {
                 deck.add(cards.remove(0));
             }
+            deck.add(cards.remove(0));
         }
     }  
 
