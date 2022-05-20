@@ -36,5 +36,5 @@ public class Deck extends CardCollection
     {
         Collections.shuffle(cards);
     }
-
+    
 }

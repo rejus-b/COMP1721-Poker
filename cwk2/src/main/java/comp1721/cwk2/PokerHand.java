@@ -14,11 +14,9 @@ public class PokerHand extends CardCollection
     public PokerHand()
     {
         super();
-        // fiveHand = 
-
     }
     
-    public PokerHand(String chosenCards) 
+    public PokerHand(String chosenCards) throws CardException
     {
         super();
         String[] fiveHand = chosenCards.split(" ");
@@ -26,21 +24,28 @@ public class PokerHand extends CardCollection
         for (String card : fiveHand)
         {
             Card newCard = new Card(card);
-            if (cards.contains(newCard) == true)
-            {
-                throw new CardException("Adding a duplicate card");
-            }
-            
-            else if (cards.size() == FULL_SIZE)
-            {
-                throw new CardException("Adding to a full deck");
-            }
-            add(newCard);
+                add(newCard);   
         }
     }
 
     @Override
-    public void discard() {
+    public void add(Card card) {
+        if (cards.contains(card) == true)
+        {
+            throw new CardException("Adding a duplicate card");
+        }
+        else if (cards.size() == FULL_SIZE)
+        {
+            throw new CardException("Adding to a full deck");
+        }
+        else{
+            super.add(card);   
+        }
+    }
+
+    @Override
+    public void discard() throws CardException
+    {
         if (cards.size() == 0)
         {
             throw new CardException("Discarding an empty deck");
@@ -51,7 +56,7 @@ public class PokerHand extends CardCollection
         }
     }
 
-    public void discardTo(Deck deck)
+    public void discardTo(Deck deck) throws CardException
     {
         if (cards.size() == 0)
         {
@@ -61,8 +66,7 @@ public class PokerHand extends CardCollection
         {
             for (Card card : cards)
             {
-                Card discardCard = cards.remove(0);
-                deck.add(discardCard);
+                deck.add(cards.remove(0));
             }
         }
     }  
