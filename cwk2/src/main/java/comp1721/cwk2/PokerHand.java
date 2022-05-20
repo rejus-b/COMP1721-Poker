@@ -18,7 +18,7 @@ public class PokerHand extends CardCollection
 
     }
     
-    public PokerHand(String chosenCards) throws CardException
+    public PokerHand(String chosenCards) 
     {
         super();
         String[] fiveHand = chosenCards.split(" ");
@@ -31,41 +31,40 @@ public class PokerHand extends CardCollection
                 throw new CardException("Adding a duplicate card");
             }
             
-            if (cards.size() == FULL_SIZE)
+            else if (cards.size() == FULL_SIZE)
             {
                 throw new CardException("Adding to a full deck");
             }
             add(newCard);
         }
-
-        // for (int i = 0; i < fiveHand.length; i += 2)
-        // {
-        //     // System.out.println(fiveHand[i]);
-        //     Rank.rank(fiveHand[i]);
-        //     Suit.suit(fiveHand[i+1]);
-        //     Card card = new Card(rank, suit);
-        //     pokerHand.add(card);
-        // }
     }
 
-    // // public String toString()
-    // // {
-    // //     return("NULL");
-    // // }
-
-    // // public int size()
-    // // {
-    // //     return 0;
-    // // }
-
-    // public void discard()
-    // {
-        
-    // }
+    @Override
+    public void discard() {
+        if (cards.size() == 0)
+        {
+            throw new CardException("Discarding an empty deck");
+        }
+        else
+        {
+            cards.clear();
+        }
+    }
 
     public void discardTo(Deck deck)
     {
-       
+        if (cards.size() == 0)
+        {
+            throw new CardException("Discarding an empty deck");
+        }
+        else
+        {
+            for (Card card : cards)
+            {
+                Card discardCard = cards.remove(0);
+                deck.add(discardCard);
+            }
+        }
     }  
 
     public boolean isPair()

@@ -21,36 +21,12 @@ public class Deck extends CardCollection
         }
     }
 
-    public int size()
-    {
-        return super.size();
-    }
-    
-    public boolean isEmpty()
-    {
-        return super.isEmpty();
-    }
-
-    public boolean contains(Card card)
-    {
-        return super.contains(card);
-    }
-
-    public void discard()
-    {
-        super.discard();
-    }
-
     public Card deal() throws CardException
     {
         if (cards.size() == 0) 
         {
             throw new CardException("No cards in deck");
         }
-        // else if (hand.size() > 5)
-        // {
-        //     throw new CardException("Adding too many cards to a hand");
-        // }
         else{
             return cards.remove(0);
         }
