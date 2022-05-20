@@ -9,23 +9,43 @@ import java.util.ArrayList;
 public class PokerHand extends CardCollection
 {
     protected static final int FULL_SIZE = 5;
-    // private ArrayList<Card> pokerHand = new ArrayList<>();
+    //private ArrayList<String> fiveHand = new ArrayList<>();
 
     public PokerHand()
     {
-
         super();
-        // ArrayList<Card> pokerHand = new ArrayList<>();
-        // cards.add()
+        // fiveHand = 
+
     }
     
-    public PokerHand(String chosenCards)
+    public PokerHand(String chosenCards) throws CardException
     {
-        // super();
-        // private char rank = chosenCards.substring(0,1);
-        // private char suit = chosenCards.substring(1); 
-        // Card card = new Card(rank, suit);
-        // pokerHand.add(card);
+        super();
+        String[] fiveHand = chosenCards.split(" ");
+
+        for (String card : fiveHand)
+        {
+            Card newCard = new Card(card);
+            if (cards.contains(newCard) == true)
+            {
+                throw new CardException("Adding a duplicate card");
+            }
+            
+            if (cards.size() == FULL_SIZE)
+            {
+                throw new CardException("Adding to a full deck");
+            }
+            add(newCard);
+        }
+
+        // for (int i = 0; i < fiveHand.length; i += 2)
+        // {
+        //     // System.out.println(fiveHand[i]);
+        //     Rank.rank(fiveHand[i]);
+        //     Suit.suit(fiveHand[i+1]);
+        //     Card card = new Card(rank, suit);
+        //     pokerHand.add(card);
+        // }
     }
 
     // // public String toString()
