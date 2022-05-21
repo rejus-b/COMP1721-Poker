@@ -99,7 +99,33 @@ public class PokerHand extends CardCollection
 
     public boolean isPair()
     {
-        return false;
+        if (cards.size() != 5)
+        {
+            return false;
+        }
+        
+        int checkPair = 0;
+		for(Card card : cards)
+		{
+            if (cards.indexOf(card) + 1 < cards.size())
+            {
+                Card cardOne = cards.get(cards.indexOf(card));
+                Card cardTwo = cards.get(cards.indexOf(card) + 1);
+                if (cardOne.getRank() == cardTwo.getRank())
+                {
+                    checkPair ++;
+                }
+            }
+        }
+        
+        if (checkPair == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public boolean isTwoPairs()
