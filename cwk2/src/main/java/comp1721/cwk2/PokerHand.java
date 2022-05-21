@@ -29,7 +29,8 @@ public class PokerHand extends CardCollection
     }
 
     @Override
-    public void add(Card card) {
+    public void add(Card card) 
+    {
         if (cards.contains(card) == true)
         {
             throw new CardException("Adding a duplicate card");
@@ -41,6 +42,30 @@ public class PokerHand extends CardCollection
         else{
             super.add(card);   
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        // Initialised as size 14 as that would be the max length of any valid poker hand
+        StringBuilder fiveHand = new StringBuilder(14);
+        for (Card card : cards)
+        {
+            if (cards.size() == 1)
+            {
+                fiveHand.append(card.toString());
+            }
+            else
+            {
+                fiveHand.append(String.format("%s", cards.get(cards.indexOf(card))));
+                if (cards.size() - 1 != cards.indexOf(card))
+                {
+                    fiveHand.append(" ");
+                }
+                
+            }
+        }
+        return fiveHand.toString();
     }
 
     @Override
