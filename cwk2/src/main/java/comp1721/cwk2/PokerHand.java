@@ -224,7 +224,42 @@ public class PokerHand extends CardCollection
 
     public boolean isFullHouse()
     {
-        return false;
+
+      if (cards.size() != 5)
+        {
+            return false;
+        }
+
+        int checkFullHouse = 0;
+
+        Card cardOne = cards.get(0);
+        Card cardTwo = cards.get(1);
+        Card cardThree = cards.get(2);
+        Card cardFour = cards.get(3);
+        Card cardFive = cards.get(4);
+
+        if ((cardOne.getRank() == cardTwo.getRank() && cardTwo.getRank() == cardThree.getRank()) ||
+        (cardThree.getRank() == cardFour.getRank() && cardFour.getRank() == cardFive.getRank()))
+        {
+            if ((cardFour.getRank() == cardFive.getRank()) &&
+            (cardOne.getRank() == cardTwo.getRank()))
+            {
+                if (cardFour.getRank() != cardTwo.getRank() && cardFive.getRank() != cardOne.getRank())
+                {
+                    checkFullHouse = 1;
+                }
+            }
+        }
+
+        if (checkFullHouse == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
     public boolean isFlush()
