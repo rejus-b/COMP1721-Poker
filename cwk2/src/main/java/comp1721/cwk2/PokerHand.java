@@ -117,7 +117,7 @@ public class PokerHand extends CardCollection
                 }
             }
         }
-        
+
         if (checkPair == 1)
         {
             return true;
@@ -130,7 +130,33 @@ public class PokerHand extends CardCollection
 
     public boolean isTwoPairs()
     {
-        return false;
+       if (cards.size() != 5)
+        {
+            return false;
+        }
+        
+        int checkTwoPair = 0;
+		for(Card card : cards)
+		{
+            if (cards.indexOf(card) + 1 < cards.size())
+            {
+                Card cardOne = cards.get(cards.indexOf(card));
+                Card cardTwo = cards.get(cards.indexOf(card) + 1);
+                if (cardOne.getRank() == cardTwo.getRank())
+                {
+                    checkTwoPair ++;
+                }
+            }
+        }
+        
+        if (checkTwoPair == 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public boolean isThreeOfAKind()
