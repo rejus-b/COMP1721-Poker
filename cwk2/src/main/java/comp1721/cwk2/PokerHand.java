@@ -264,6 +264,22 @@ public class PokerHand extends CardCollection
 
     public boolean isFlush()
     {
+
+        if (cards.size() != 5)
+        {
+            return false;
+        }
+        
+        Card cardOne = cards.get(0);
+        Card cardTwo = cards.get(1);
+        Card cardThree = cards.get(2);
+        Card cardFour = cards.get(3);
+        Card cardFive = cards.get(4);
+
+        if (cardOne.getSuit() == cardTwo.getSuit() && cardTwo.getSuit() == cardThree.getSuit() && cardThree.getSuit() == cardFour.getSuit() && cardFour.getSuit() == cardFive.getSuit())
+        {
+            return true;
+        }
         return false;
     }
 
