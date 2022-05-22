@@ -161,12 +161,65 @@ public class PokerHand extends CardCollection
 
     public boolean isThreeOfAKind()
     {
-        return false;
+      if (cards.size() != 5)
+        {
+            return false;
+        }
+        
+        int checkThreeOfAKind = 0;
+		for(Card card : cards)
+		{
+            if (cards.indexOf(card) + 2 < cards.size())
+            {
+                Card cardOne = cards.get(cards.indexOf(card));
+                Card cardTwo = cards.get(cards.indexOf(card) + 1);
+                Card cardThree = cards.get(cards.indexOf(card) + 2);
+                if (cardOne.getRank() == cardTwo.getRank() || cardTwo.getRank() == cardThree.getRank())
+                {
+                    checkThreeOfAKind ++;
+                }
+            }
+        }
+        
+        if (checkThreeOfAKind == 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public boolean isFourOfAKind()
     {
-        return false;
+      if (cards.size() != 5)
+        {
+            return false;
+        }
+        
+        int checkFourOfAKind = 0;
+		for(Card card : cards)
+		{
+            if (cards.indexOf(card) + 3 < cards.size())
+            {
+                Card cardOne = cards.get(cards.indexOf(card));
+                Card cardFour = cards.get(cards.indexOf(card) + 3);
+                if (cardOne.getRank() == cardFour.getRank())
+                {
+                    checkFourOfAKind ++;
+                }
+            }
+        }
+        
+        if (checkFourOfAKind == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public boolean isFullHouse()
