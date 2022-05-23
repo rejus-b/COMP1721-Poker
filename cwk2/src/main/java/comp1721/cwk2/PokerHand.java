@@ -297,6 +297,11 @@ public class PokerHand extends CardCollection
         int cardFour = Character.getNumericValue(cards.get(3).toString().charAt(0));
         int cardFive = Character.getNumericValue(cards.get(4).toString().charAt(0));
         
+        if (cards.get(0).toString().charAt(0) == 'A')
+        {
+            cardOne = 1;
+        }
+        
         if (cardOne - cardTwo == -1)
         {
             if (cardTwo - cardThree == -1)
