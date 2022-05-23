@@ -291,17 +291,28 @@ public class PokerHand extends CardCollection
             return false;
         }
 
-        int cardOne = Character.getNumericValue(cards.get(0).toString().charAt(0));
-        int cardTwo = Character.getNumericValue(cards.get(1).toString().charAt(0));
-        int cardThree = Character.getNumericValue(cards.get(2).toString().charAt(0));
-        int cardFour = Character.getNumericValue(cards.get(3).toString().charAt(0));
-        int cardFive = Character.getNumericValue(cards.get(4).toString().charAt(0));
+
+        // int cardabc = cards.get(0).getRank().ordinal();
+        // 14 Cards for low and high ace
+        // int[] valueOfCards = new int[14];
+
+        // int cardOne = Character.getNumericValue(cards.get(0).toString().charAt(0));
+        // int cardTwo = Character.getNumericValue(cards.get(1).toString().charAt(0));
+        // int cardThree = Character.getNumericValue(cards.get(2).toString().charAt(0));
+        // int cardFour = Character.getNumericValue(cards.get(3).toString().charAt(0));
+        // int cardFive = Character.getNumericValue(cards.get(4).toString().charAt(0));
+
+        int cardOne = cards.get(0).getRank().ordinal();
+        int cardTwo = cards.get(1).getRank().ordinal();
+        int cardThree = cards.get(2).getRank().ordinal();
+        int cardFour = cards.get(3).getRank().ordinal();
+        int cardFive = cards.get(4).getRank().ordinal();
         
-        if (cards.get(0).toString().charAt(0) == 'A')
-        {
-            cardOne = 1;
-        }
-        
+        // if (cards.get(0).toString().charAt(0) == 'A')
+        // {
+        //     cardOne = 100;
+        // }
+     
         if (cardOne - cardTwo == -1)
         {
             if (cardTwo - cardThree == -1)
@@ -309,6 +320,10 @@ public class PokerHand extends CardCollection
                 if (cardThree - cardFour == -1)
                 {
                     if (cardFour - cardFive == -1)
+                    {
+                        return true;
+                    }
+                    if (cardFour == 12 && cardFive == 0)
                     {
                         return true;
                     }
