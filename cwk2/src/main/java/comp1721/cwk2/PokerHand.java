@@ -5,18 +5,21 @@ package comp1721.cwk2;
 public class PokerHand extends CardCollection
 {
     protected static final int FULL_SIZE = 5;
-    //private ArrayList<String> fiveHand = new ArrayList<>();
 
     public PokerHand()
     {
+        // Super to initialise the deck in card collection 
         super();
     }
     
     public PokerHand(String chosenCards) throws CardException
     {
+        // Super to initialise the deck in card collection 
         super();
+        // Assign a string array that consists of the user input cards
         String[] fiveHand = chosenCards.split(" ");
 
+        // For every card in a hand, parse it as a new card
         for (String card : fiveHand)
         {
             Card newCard = new Card(card);
@@ -27,14 +30,17 @@ public class PokerHand extends CardCollection
     @Override
     public void add(Card card) 
     {
+        // If a card being added already exists, throw exception
         if (cards.contains(card))
         {
             throw new CardException("Adding a duplicate card");
         }
+        // If your hand is full, throw exception
         else if (cards.size() == FULL_SIZE)
         {
             throw new CardException("Adding to a full deck");
         }
+        // Add a new card to your hand
         else{
             super.add(card);   
         }
@@ -45,15 +51,19 @@ public class PokerHand extends CardCollection
     {
         // Initialised as size 14 as that would be the max length of any valid poker hand
         StringBuilder fiveHand = new StringBuilder(14);
+        // Loop through every card to convert it to a string
         for (Card card : cards)
         {
+            // If the size of the hand is only 1 then append it to a stringBuilder and do nothing
             if (cards.size() == 1)
             {
                 fiveHand.append(card.toString());
             }
+            // If the size of hand is > 1 format it to include spaces after each card
             else
             {
                 fiveHand.append(String.format("%s", cards.get(cards.indexOf(card))));
+                // If the final card is reached, do not append a whitespace 
                 if (cards.size() - 1 != cards.indexOf(card))
                 {
                     fiveHand.append(" ");
@@ -61,12 +71,14 @@ public class PokerHand extends CardCollection
                 
             }
         }
+        // Return the string of a hand
         return fiveHand.toString();
     }
 
     @Override
     public void discard() throws CardException
     {
+        // If the hand is empty, throw an exception
         if (cards.size() == 0)
         {
             throw new CardException("Discarding an empty deck");
@@ -79,27 +91,32 @@ public class PokerHand extends CardCollection
 
     public void discardTo(Deck deck) throws CardException
     {
+        // If the hand is empty, throw an exception
         if (cards.size() == 0)
         {
             throw new CardException("Discarding an empty deck");
         }
+        // Loop through every card in your hand and add it to a deck
         else
         {
             for (Card card : cards)
             {
                 deck.add(cards.remove(0));
             }
+            // Remove the final card and add to the deck
             deck.add(cards.remove(0));
         }
     }  
 
     public boolean isPair()
     {
+        // If the hand is not full, throw an exception
         if (cards.size() != 5)
         {
             return false;
         }
         
+        // For every card in the hand check if two card ranks are equal
         int checkPair = 0;
         for(Card card : cards)
         {
@@ -114,6 +131,7 @@ public class PokerHand extends CardCollection
             }
         }
 
+        // Check that there is only a single pair found 
         if (checkPair == 1)
         {
             return true;
@@ -123,11 +141,13 @@ public class PokerHand extends CardCollection
 
     public boolean isTwoPairs()
     {
-       if (cards.size() != 5)
+        // If the hand is not full, throw an exception
+        if (cards.size() != 5)
         {
             return false;
         }
         
+        // For every card in the hand check if two card ranks are equal
         int checkTwoPair = 0;
         for(Card card : cards)
         {
@@ -142,6 +162,7 @@ public class PokerHand extends CardCollection
             }
         }
         
+        // Check that there is two pairs exactly
         if (checkTwoPair == 2)
         {
             return true;
@@ -151,11 +172,13 @@ public class PokerHand extends CardCollection
 
     public boolean isThreeOfAKind()
     {
-      if (cards.size() != 5)
+        // If the hand is not full, throw an exception
+        if (cards.size() != 5)
         {
             return false;
         }
         
+        // For every card in the hand check if three card ranks are equal
         int checkThreeOfAKind = 0;
         for(Card card : cards)
         {
@@ -164,6 +187,7 @@ public class PokerHand extends CardCollection
                 Card cardOne = cards.get(cards.indexOf(card));
                 Card cardTwo = cards.get(cards.indexOf(card) + 1);
                 Card cardThree = cards.get(cards.indexOf(card) + 2);
+                // If the first two cards, or the last two cards have the same rank then increment count 
                 if (cardOne.getRank() == cardTwo.getRank() ||
                 cardTwo.getRank() == cardThree.getRank())
                 {
@@ -172,6 +196,7 @@ public class PokerHand extends CardCollection
             }
         }
         
+        // An ordered three pair would have a count of 2 exactly
         if (checkThreeOfAKind == 2)
         {
             return true;
@@ -181,11 +206,13 @@ public class PokerHand extends CardCollection
 
     public boolean isFourOfAKind()
     {
-      if (cards.size() != 5)
+        // If the hand is not full, throw an exception
+        if (cards.size() != 5)
         {
             return false;
         }
         
+        // For every card in the hand check if the 1st card and 4th card are equal rank
         int checkFourOfAKind = 0;
         for(Card card : cards)
         {
@@ -200,6 +227,7 @@ public class PokerHand extends CardCollection
             }
         }
         
+        // If there is a four of a kind found return true
         if (checkFourOfAKind == 1)
         {
             return true;
@@ -209,8 +237,8 @@ public class PokerHand extends CardCollection
 
     public boolean isFullHouse()
     {
-
-      if (cards.size() != 5)
+        // If the hand is not full, throw an exception
+        if (cards.size() != 5)
         {
             return false;
         }
@@ -246,7 +274,7 @@ public class PokerHand extends CardCollection
 
     public boolean isFlush()
     {
-
+        // If the hand is not full, throw an exception
         if (cards.size() != 5)
         {
             return false;
@@ -268,6 +296,7 @@ public class PokerHand extends CardCollection
 
     public boolean isStraight()
     {
+        // If the hand is not full, throw an exception
         if (cards.size() != 5)
         {
             return false;
