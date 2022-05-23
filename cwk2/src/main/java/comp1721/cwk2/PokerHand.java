@@ -285,6 +285,34 @@ public class PokerHand extends CardCollection
 
     public boolean isStraight()
     {
+        // Idea is to compare two cards, if their difference is not greater than 1 then it is considered a straight
+        if (cards.size() != 5)
+        {
+            return false;
+        }
+
+        int cardOne = Character.getNumericValue(cards.get(0).toString().charAt(0));
+        int cardTwo = Character.getNumericValue(cards.get(1).toString().charAt(0));
+        int cardThree = Character.getNumericValue(cards.get(2).toString().charAt(0));
+        int cardFour = Character.getNumericValue(cards.get(3).toString().charAt(0));
+        int cardFive = Character.getNumericValue(cards.get(4).toString().charAt(0));
+        
+        if (cardOne - cardTwo == -1)
+        {
+            if (cardTwo - cardThree == -1)
+            {
+                if (cardThree - cardFour == -1)
+                {
+                    if (cardFour - cardFive == -1)
+                    {
+                        return true;
+                    }
+                }
+            }
+        } 
+
+        // Could toString the card to get the character represntation, then convert each one to an int
+
         return false;
     }
 
