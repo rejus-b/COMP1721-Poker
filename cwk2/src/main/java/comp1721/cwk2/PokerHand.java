@@ -1,8 +1,4 @@
 package comp1721.cwk2;
-import comp1721.cwk2.Card.Rank;
-import comp1721.cwk2.Card.Suit;
-import java.util.ArrayList;
-// import java.utils.random;
 
 // Implement PokerHand class here
 
@@ -31,7 +27,7 @@ public class PokerHand extends CardCollection
     @Override
     public void add(Card card) 
     {
-        if (cards.contains(card) == true)
+        if (cards.contains(card))
         {
             throw new CardException("Adding a duplicate card");
         }
@@ -105,8 +101,8 @@ public class PokerHand extends CardCollection
         }
         
         int checkPair = 0;
-		for(Card card : cards)
-		{
+        for(Card card : cards)
+        {
             if (cards.indexOf(card) + 1 < cards.size())
             {
                 Card cardOne = cards.get(cards.indexOf(card));
@@ -122,10 +118,7 @@ public class PokerHand extends CardCollection
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     public boolean isTwoPairs()
@@ -136,8 +129,8 @@ public class PokerHand extends CardCollection
         }
         
         int checkTwoPair = 0;
-		for(Card card : cards)
-		{
+        for(Card card : cards)
+        {
             if (cards.indexOf(card) + 1 < cards.size())
             {
                 Card cardOne = cards.get(cards.indexOf(card));
@@ -153,10 +146,7 @@ public class PokerHand extends CardCollection
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     public boolean isThreeOfAKind()
@@ -167,14 +157,15 @@ public class PokerHand extends CardCollection
         }
         
         int checkThreeOfAKind = 0;
-		for(Card card : cards)
-		{
+        for(Card card : cards)
+        {
             if (cards.indexOf(card) + 2 < cards.size())
             {
                 Card cardOne = cards.get(cards.indexOf(card));
                 Card cardTwo = cards.get(cards.indexOf(card) + 1);
                 Card cardThree = cards.get(cards.indexOf(card) + 2);
-                if (cardOne.getRank() == cardTwo.getRank() || cardTwo.getRank() == cardThree.getRank())
+                if (cardOne.getRank() == cardTwo.getRank() ||
+                cardTwo.getRank() == cardThree.getRank())
                 {
                     checkThreeOfAKind ++;
                 }
@@ -185,10 +176,7 @@ public class PokerHand extends CardCollection
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     public boolean isFourOfAKind()
@@ -199,8 +187,8 @@ public class PokerHand extends CardCollection
         }
         
         int checkFourOfAKind = 0;
-		for(Card card : cards)
-		{
+        for(Card card : cards)
+        {
             if (cards.indexOf(card) + 3 < cards.size())
             {
                 Card cardOne = cards.get(cards.indexOf(card));
@@ -216,10 +204,7 @@ public class PokerHand extends CardCollection
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     public boolean isFullHouse()
@@ -244,7 +229,8 @@ public class PokerHand extends CardCollection
             if ((cardFour.getRank() == cardFive.getRank()) &&
             (cardOne.getRank() == cardTwo.getRank()))
             {
-                if (cardFour.getRank() != cardTwo.getRank() && cardFive.getRank() != cardOne.getRank())
+                if (cardFour.getRank() != cardTwo.getRank() &&
+                cardFive.getRank() != cardOne.getRank())
                 {
                     checkFullHouse = 1;
                 }
@@ -255,11 +241,7 @@ public class PokerHand extends CardCollection
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
-
+        return false;
     }
 
     public boolean isFlush()
@@ -276,7 +258,8 @@ public class PokerHand extends CardCollection
         Card cardFour = cards.get(3);
         Card cardFive = cards.get(4);
 
-        if (cardOne.getSuit() == cardTwo.getSuit() && cardTwo.getSuit() == cardThree.getSuit() && cardThree.getSuit() == cardFour.getSuit() && cardFour.getSuit() == cardFive.getSuit())
+        if (cardOne.getSuit() == cardTwo.getSuit() && cardTwo.getSuit() == cardThree.getSuit() &&
+        cardThree.getSuit() == cardFour.getSuit() && cardFour.getSuit() == cardFive.getSuit())
         {
             return true;
         }
@@ -285,33 +268,16 @@ public class PokerHand extends CardCollection
 
     public boolean isStraight()
     {
-        // Idea is to compare two cards, if their difference is not greater than 1 then it is considered a straight
         if (cards.size() != 5)
         {
             return false;
         }
-
-
-        // int cardabc = cards.get(0).getRank().ordinal();
-        // 14 Cards for low and high ace
-        // int[] valueOfCards = new int[14];
-
-        // int cardOne = Character.getNumericValue(cards.get(0).toString().charAt(0));
-        // int cardTwo = Character.getNumericValue(cards.get(1).toString().charAt(0));
-        // int cardThree = Character.getNumericValue(cards.get(2).toString().charAt(0));
-        // int cardFour = Character.getNumericValue(cards.get(3).toString().charAt(0));
-        // int cardFive = Character.getNumericValue(cards.get(4).toString().charAt(0));
 
         int cardOne = cards.get(0).getRank().ordinal();
         int cardTwo = cards.get(1).getRank().ordinal();
         int cardThree = cards.get(2).getRank().ordinal();
         int cardFour = cards.get(3).getRank().ordinal();
         int cardFive = cards.get(4).getRank().ordinal();
-        
-        // if (cards.get(0).toString().charAt(0) == 'A')
-        // {
-        //     cardOne = 100;
-        // }
      
         if (cardOne - cardTwo == -1)
         {
@@ -330,9 +296,6 @@ public class PokerHand extends CardCollection
                 }
             }
         } 
-
-        // Could toString the card to get the character represntation, then convert each one to an int
-
         return false;
     }
 
