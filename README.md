@@ -1,4 +1,4 @@
-# COMP1721 Practical Work
+# COMP1721 Poker Java
 
 This repository contains your exercise and coursework solutions for
 [COMP1721 Object-Oriented Programming]
